@@ -356,11 +356,10 @@ python -m src.main --help
 - [x] 面试题库 / 模拟面试
 - [x] Offer 对比
 - [x] 仪表盘 / 交互 REPL
-- [ ] 支持拉勾 / 猎聘
+- [ ] 支持猎聘等其他招聘软件
 - [ ] 定时搜索 + 新岗位通知
 - [ ] Web UI (Gradio / Streamlit)
 - [ ] 投递漏斗数据分析
-- [ ] 面试录音转文字 + AI 实时提示
 
 ## License
 
