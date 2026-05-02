@@ -1,4 +1,4 @@
-"""CLI entry point for 求职助手 (Job Search Assistant)."""
+"""CLI entry point for HireHive — Multi-Agent Job Search Pipeline."""
 
 import json
 import sys
@@ -140,7 +140,7 @@ def build_registry(agent_type: str) -> ToolRegistry:
 @click.group()
 @click.version_option(version="0.1.0")
 def cli():
-    """Job Assistant — Full-process AI Job Search Agent"""
+    """HireHive — Multi-Agent Job Search Pipeline (Boss Zhipin)"""
     config.data_dir.mkdir(parents=True, exist_ok=True)
     init_db()
 
@@ -571,7 +571,7 @@ def dashboard():
     jobs_total = job_repo.job_count()
 
     console.print(Panel.fit(
-        f"[bold]求职助手仪表盘[/bold]\n\n"
+        f"[bold]HireHive Dashboard[/bold]\n\n"
         f"  总岗位数: {jobs_total}\n",
         title="Dashboard"
     ))
@@ -600,9 +600,9 @@ def dashboard():
 def interactive():
     """交互式 REPL 模式"""
     console.print(Panel.fit(
-        "[bold]求职助手 (Job Search Assistant)[/bold]\n\n"
-        "命令: search / match / apply / interview / offer / dashboard / help / quit",
-        title="欢迎"
+        "[bold]HireHive — Job Search Agent[/bold]\n\n"
+        "Commands: search / match / apply / interview / offer / dashboard / help / quit",
+        title="Welcome"
     ))
 
     # Build coordinator registry with all tools
@@ -612,7 +612,7 @@ def interactive():
 
     while True:
         try:
-            cmd = click.prompt("\n[bold cyan]job[/bold cyan]", prompt_suffix="> ").strip()
+            cmd = click.prompt("\n[bold cyan]hirehive[/bold cyan]", prompt_suffix="> ").strip()
         except (EOFError, KeyboardInterrupt):
             console.print("\n[dim]再见！[/dim]")
             break

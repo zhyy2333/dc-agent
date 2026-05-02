@@ -1,4 +1,4 @@
-# 🤖 求职助手 (Job Search Assistant)
+# 🐝 HireHive-JobSearchAgent — Boss求职助手
 
 **全流程 AI 求职 Agent** — 从岗位发现、简历匹配、自动投递、面试准备到 Offer 对比，覆盖求职全生命周期。
 
@@ -63,7 +63,7 @@
 ## 项目结构
 
 ```
-dc-agent/
+hirehive/
 ├── src/
 │   ├── main.py                    # CLI 入口 (Click, 8 个子命令组)
 │   ├── config.py                  # 配置管理 (环境变量 + dataclass)
@@ -124,7 +124,7 @@ dc-agent/
 
 ```bash
 # 1. 克隆项目
-git clone <repo-url> && cd dc-agent
+git clone <repo-url> && cd hirehive
 
 # 2. 安装依赖
 pip install -e .
@@ -155,69 +155,69 @@ BROWSER_HEADLESS=false
 
 ```bash
 # 查看所有命令
-job-assistant --help
+hirehive --help
 
 # 上传简历
-job-assistant resume upload ~/my-resume.pdf
+hirehive resume upload ~/my-resume.pdf
 
 # 搜索岗位
-job-assistant search run --role "Python开发" --city "深圳" --salary-min 20000
+hirehive search run --role "Python开发" --city "深圳" --salary-min 20000
 
 # 查看搜索到的岗位
-job-assistant search list
+hirehive search list
 
 # 简历匹配评分
-job-assistant match --all --min-score 0.6
+hirehive match --all --min-score 0.6
 
 # 投递岗位
-job-assistant apply go --job-id 3
+hirehive apply go --job-id 3
 
 # 查看投递状态
-job-assistant apply status
+hirehive apply status
 
 # 面试准备
-job-assistant interview prep --job-id 3
+hirehive interview prep --job-id 3
 
 # 模拟面试
-job-assistant interview mock --job-id 3
+hirehive interview mock --job-id 3
 
 # 添加 Offer
-job-assistant offer add --company "A公司" --position "高级Python" --salary 30000
+hirehive offer add --company "A公司" --position "高级Python" --salary 30000
 
 # Offer 对比
-job-assistant offer compare
+hirehive offer compare
 
 # 流水线仪表盘
-job-assistant dashboard
+hirehive dashboard
 
 # 交互式 REPL 模式
-job-assistant interactive
+hirehive interactive
 ```
 
 ## 交互式模式
 
 ```bash
-$ job-assistant interactive
+$ hirehive interactive
 
 ╭──── 欢迎 ────╮
-│ 求职助手      │
+│ HireHive      │
 │ 命令: search / match / apply / interview / offer / dashboard / help / quit │
 ╰──────────────╯
 
-job> dashboard
+hirehive> dashboard
   已发现        [ 12]
   已匹配        [  8]
   已投递        [  3]
   面试中        [  2]
 
-job> match --all --min-score 0.7
+hirehive> match --all --min-score 0.7
   [████████████] 匹配中... 8 个岗位评分 >= 0.7
 
-job> apply 12
+hirehive> apply 12
   确认投递 'Python高级开发' @ 示例科技? [Y/n] y
   投递完成 ✓
 
-job> offer compare
+hirehive> offer compare
   Offer 对比分析...（多维度加权评分表）
 ```
 
