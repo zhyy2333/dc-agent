@@ -1,0 +1,10 @@
+data/state.db
+data/exports/
+data/screenshots/
+data/browser_profile/
+__pycache__/
+*.pyc
+.egg-info/
+.env
+dist/
+build/

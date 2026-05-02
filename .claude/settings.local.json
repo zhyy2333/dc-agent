@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"c:\\\\Users\\\\Administrator\\\\Desktop\\\\dc-agent\")",
+      "Bash(python -c \"import sys; print\\(sys.executable\\); print\\(sys.version\\)\")",
+      "Read(//c/Program Files/**)",
+      "Bash(/c/Users/Administrator/AppData/Local/Programs/Python/Python*/python --version)",
+      "Bash(winget list *)",
+      "Bash(/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe -c ' *)",
+      "Bash(PYTHONIOENCODING=utf-8 \"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m src.main dashboard)",
+      "Bash(PYTHONIOENCODING=utf-8 \"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m src.main resume show)",
+      "Bash(PYTHONIOENCODING=utf-8 \"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m src.main search list)",
+      "Bash(PYTHONIOENCODING=utf-8 \"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m src.main apply status)",
+      "Bash(PYTHONIOENCODING=utf-8 \"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m src.main offer list)"
+    ]
+  }
+}
