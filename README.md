@@ -144,7 +144,7 @@ cp .env.example .env
 ```bash
 ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
 ANTHROPIC_AUTH_TOKEN=sk-your-key-here
-ANTHROPIC_MODEL=deepseek-v4-pro
+ANTHROPIC_MODEL=deepseek-v4-pro[1m]
 JOB_DEFAULT_CITY=深圳
 JOB_DEFAULT_SALARY_MIN=15000
 JOB_DEFAULT_SALARY_MAX=35000
