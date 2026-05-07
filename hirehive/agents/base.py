@@ -4,10 +4,10 @@ import json
 from typing import Any
 from anthropic import Anthropic
 from anthropic.types import MessageParam, ToolParam
-from src.llm import get_client
-from src.config import config
-from src.tools.registry import ToolRegistry
-from src.utils.logger import log
+from hirehive.llm import get_client
+from hirehive.config import config
+from hirehive.tools.registry import ToolRegistry
+from hirehive.utils.logger import log
 
 
 class BaseAgent:

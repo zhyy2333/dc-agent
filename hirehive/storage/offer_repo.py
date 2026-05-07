@@ -1,8 +1,8 @@
 """Offer repository."""
 
 import json
-from src.storage.engine import get_connection
-from src.models.offer import Offer
+from hirehive.storage.engine import get_connection
+from hirehive.models.offer import Offer
 
 
 def save_offer(offer: Offer) -> int:

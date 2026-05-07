@@ -2,7 +2,7 @@
 
 import sqlite3
 from pathlib import Path
-from src.config import config
+from hirehive.config import config
 
 
 def get_db_path() -> Path:

@@ -1,7 +1,7 @@
 """Anthropic SDK client wrapper configured for DeepSeek proxy."""
 
 from anthropic import Anthropic
-from src.config import config
+from hirehive.config import config
 
 
 def create_client() -> Anthropic:

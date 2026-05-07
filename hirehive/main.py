@@ -10,11 +10,11 @@ from rich.table import Table
 from rich.panel import Panel
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from src.config import config
-from src.storage import init_db
-from src.storage import job_repo, resume_repo, application_repo, offer_repo
-from src.tools.registry import ToolRegistry
-from src.tools import browser_tools, file_tools, state_tools
+from hirehive.config import config
+from hirehive.storage import init_db
+from hirehive.storage import job_repo, resume_repo, application_repo, offer_repo
+from hirehive.tools.registry import ToolRegistry
+from hirehive.tools import browser_tools, file_tools, state_tools
 
 console = Console()
 
@@ -169,7 +169,7 @@ def resume_upload(file_path: str):
         console.print(f"[red]解析失败: {result['error']}[/red]")
         return
 
-    from src.models.resume import Resume
+    from hirehive.models.resume import Resume
     resume_obj = Resume(
         file_path=file_path,
         raw_text=result["raw_text"],
@@ -204,7 +204,7 @@ def resume_parse():
         return
 
     registry = build_registry("matcher")
-    from src.agents.matcher import MatcherAgent
+    from hirehive.agents.matcher import MatcherAgent
     agent = MatcherAgent(registry)
 
     with Progress(SpinnerColumn(), TextColumn("[progress.description]{task.description}"), console=console) as progress:
@@ -234,7 +234,7 @@ def search_run(role: str, city: str | None, salary_min: int, salary_max: int, pa
     """在 BOSS 直聘搜索岗位"""
     city = city or config.default_city
     registry = build_registry("searcher")
-    from src.agents.searcher import SearcherAgent
+    from hirehive.agents.searcher import SearcherAgent
     agent = SearcherAgent(registry)
 
     console.print(f"[bold]搜索条件[/bold]: {role} / {city} / {salary_min}-{salary_max}K")
@@ -305,7 +305,7 @@ def match_run(job_ids: str | None, all: bool, min_score: float):
         return
 
     registry = build_registry("matcher")
-    from src.agents.matcher import MatcherAgent
+    from hirehive.agents.matcher import MatcherAgent
     agent = MatcherAgent(registry)
 
     ids_list = [int(x.strip()) for x in job_ids.split(",") if x.strip()] if job_ids else None
@@ -357,7 +357,7 @@ def apply_go(job_id: int):
         return
 
     registry = build_registry("applier")
-    from src.agents.applier import ApplierAgent
+    from hirehive.agents.applier import ApplierAgent
     agent = ApplierAgent(registry)
 
     console.print("[bold]执行投递...[/bold]")
@@ -366,7 +366,7 @@ def apply_go(job_id: int):
         result = agent.apply(job["url"], job["title"], job["company"])
 
     # Update application state
-    from src.models.application import Application, PipelineStage
+    from hirehive.models.application import Application, PipelineStage
     app = Application(job_id=job_id, resume_id=row["id"], pipeline_stage=PipelineStage.APPLIED)
     application_repo.save_application(app)
 
@@ -425,7 +425,7 @@ def interview_prep(job_id: int):
         return
 
     registry = build_registry("interview_coach")
-    from src.agents.interview_coach import InterviewCoachAgent
+    from hirehive.agents.interview_coach import InterviewCoachAgent
     agent = InterviewCoachAgent(registry)
 
     console.print("[bold]生成面试准备材料...[/bold]")
@@ -451,7 +451,7 @@ def interview_mock(job_id: int | None):
             job_desc = job.get("description", "")
 
     registry = build_registry("interview_coach")
-    from src.agents.interview_coach import InterviewCoachAgent
+    from hirehive.agents.interview_coach import InterviewCoachAgent
     agent = InterviewCoachAgent(registry)
 
     console.print(Panel("[bold]模拟面试模式[/bold]\n输入你的回答，AI 面试官会追问。输入 /quit 退出。", title="面试开始"))
@@ -492,7 +492,7 @@ def offer():
 @click.option("--commute", type=int, default=0, help="通勤时间 (分钟)")
 def offer_add(company: str, position: str, salary: int, bonus: int, location: str, work_mode: str, equity: str, commute: int):
     """添加 Offer 记录"""
-    from src.models.offer import Offer
+    from hirehive.models.offer import Offer
     o = Offer(
         company=company, position=position, base_salary=salary,
         bonus_months=bonus, location=location, work_mode=work_mode,
@@ -511,7 +511,7 @@ def offer_compare():
         return
 
     registry = build_registry("offer_advisor")
-    from src.agents.offer_advisor import OfferAdvisorAgent
+    from hirehive.agents.offer_advisor import OfferAdvisorAgent
     agent = OfferAdvisorAgent(registry)
 
     console.print("[bold]分析对比中...[/bold]")
@@ -607,7 +607,7 @@ def interactive():
 
     # Build coordinator registry with all tools
     registry = build_registry("coordinator")
-    from src.agents.coordinator import CoordinatorAgent
+    from hirehive.agents.coordinator import CoordinatorAgent
     coordinator = CoordinatorAgent(registry)
 
     while True:

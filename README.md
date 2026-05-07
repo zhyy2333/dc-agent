@@ -64,7 +64,7 @@
 
 ```
 hirehive/
-├── src/
+├── hirehive/
 │   ├── main.py                    # CLI 入口 (Click, 8 个子命令组)
 │   ├── config.py                  # 配置管理 (环境变量 + dataclass)
 │   ├── llm.py                     # Anthropic SDK 封装 (DeepSeek proxy)
@@ -144,7 +144,7 @@ cp .env.example .env
 ```bash
 ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
 ANTHROPIC_AUTH_TOKEN=sk-your-key-here
-ANTHROPIC_MODEL=deepseek-v4-pro[1m]
+ANTHROPIC_MODEL=deepseek-v4-pro
 JOB_DEFAULT_CITY=深圳
 JOB_DEFAULT_SALARY_MIN=15000
 JOB_DEFAULT_SALARY_MAX=35000
@@ -338,8 +338,8 @@ discovered → matched → applied → interviewing → offered → accepted
 ### 开发
 
 ```bash
-pip install -e ".[dev]"
-python -m src.main --help
+pip install -e .
+hirehive --help
 ```
 
 ### Prompt 调优

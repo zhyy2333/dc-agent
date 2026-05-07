@@ -2,7 +2,7 @@
 
 from typing import Any, Callable
 import json
-from src.utils.logger import log
+from hirehive.utils.logger import log
 
 
 class ToolRegistry:

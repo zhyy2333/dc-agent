@@ -5,8 +5,8 @@ to automate BOSS直聘 job search, detail scraping, and application submission.
 """
 
 from pathlib import Path
-from src.config import config
-from src.utils.text import random_delay
+from hirehive.config import config
+from hirehive.utils.text import random_delay
 
 
 _browser = None

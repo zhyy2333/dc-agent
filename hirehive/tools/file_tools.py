@@ -2,8 +2,8 @@
 
 import json
 from pathlib import Path
-from src.config import config
-from src.utils.text import extract_email, extract_phone
+from hirehive.config import config
+from hirehive.utils.text import extract_email, extract_phone
 
 
 def parse_resume_pdf(file_path: str) -> dict:
@@ -43,7 +43,7 @@ def _parse_text(text: str, file_path: str) -> dict:
 
 
 def read_user_resume() -> dict:
-    from src.storage import resume_repo
+    from hirehive.storage import resume_repo
     row = resume_repo.get_active_resume()
     if not row:
         return {"error": "No resume uploaded. Use 'resume upload' first."}

@@ -13,7 +13,13 @@
       "Bash(PYTHONIOENCODING=utf-8 \"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m src.main apply status)",
       "Bash(PYTHONIOENCODING=utf-8 \"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m src.main offer list)",
       "Bash(\"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m pip install -e \"c:/Users/Administrator/Desktop/dc-agent\" --force-reinstall)",
-      "Bash(PYTHONIOENCODING=utf-8 \"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m src.main --help)"
+      "Bash(PYTHONIOENCODING=utf-8 \"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m src.main --help)",
+      "Bash(\"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m pip uninstall hirehive-jobsearchagent job-assistant -y)",
+      "Bash(rm -f \"C:/Users/Administrator/AppData/Local/Programs/Python/Python312/Scripts/hirehive.exe\")",
+      "Read(//c/Users/Administrator/AppData/Local/Programs/Python/Python312/Scripts/**)",
+      "Bash(\"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -m pip install -e \"c:/Users/Administrator/Desktop/dc-agent\")",
+      "Bash(\"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/python.exe\" -c \"from src.main import main; print\\('import ok'\\)\")",
+      "Bash(PYTHONIOENCODING=utf-8 \"/c/Users/Administrator/AppData/Local/Programs/Python/Python312/Scripts/hirehive.exe\" --help)"
     ]
   }
 }

@@ -1,8 +1,8 @@
 """Searcher Agent — discovers jobs on BOSS直聘."""
 
 from pathlib import Path
-from src.agents.base import BaseAgent
-from src.tools.registry import ToolRegistry
+from hirehive.agents.base import BaseAgent
+from hirehive.tools.registry import ToolRegistry
 
 PROMPT_FILE = Path(__file__).resolve().parent.parent.parent / "prompts" / "searcher.system.md"
 

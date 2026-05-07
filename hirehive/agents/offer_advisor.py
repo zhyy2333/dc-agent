@@ -1,8 +1,8 @@
 """Offer Advisor Agent — compares multiple job offers."""
 
 from pathlib import Path
-from src.agents.base import BaseAgent
-from src.tools.registry import ToolRegistry
+from hirehive.agents.base import BaseAgent
+from hirehive.tools.registry import ToolRegistry
 
 PROMPT_FILE = Path(__file__).resolve().parent.parent.parent / "prompts" / "offer_advisor.system.md"
 

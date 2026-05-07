@@ -1,9 +1,9 @@
 """Coordinator Agent — the Planner/Orchestrator for the pipeline."""
 
 from pathlib import Path
-from src.agents.base import BaseAgent
-from src.tools.registry import ToolRegistry
-from src.tools import state_tools
+from hirehive.agents.base import BaseAgent
+from hirehive.tools.registry import ToolRegistry
+from hirehive.tools import state_tools
 
 
 PROMPT_FILE = Path(__file__).resolve().parent.parent.parent / "prompts" / "coordinator.system.md"

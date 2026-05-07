@@ -1,10 +1,10 @@
 """Database read/write tools exposed to agents."""
 
 from typing import Any
-from src.storage import job_repo, application_repo, offer_repo, resume_repo
-from src.models.job import Job, SalaryRange
-from src.models.application import Application
-from src.models.offer import Offer
+from hirehive.storage import job_repo, application_repo, offer_repo, resume_repo
+from hirehive.models.job import Job, SalaryRange
+from hirehive.models.application import Application
+from hirehive.models.offer import Offer
 
 
 def list_jobs(stage: str | None = None, min_score: float | None = None, limit: int = 100) -> list[dict]:
@@ -35,7 +35,7 @@ def list_applications(stage: str | None = None, limit: int = 100) -> list[dict]:
 
 
 def update_application(job_id: int, stage: str, **kwargs: Any) -> dict:
-    from src.models.application import PipelineStage
+    from hirehive.models.application import PipelineStage
     app_data = application_repo.get_application(job_id)
     if app_data:
         for key, value in kwargs.items():
@@ -44,7 +44,7 @@ def update_application(job_id: int, stage: str, **kwargs: Any) -> dict:
         # Reconstruct Application from dict — use the save_application directly
         import json
         conn_ = None
-        from src.storage.engine import get_connection
+        from hirehive.storage.engine import get_connection
         conn_ = get_connection()
         conn_.execute(
             """UPDATE application SET pipeline_stage=?, match_score=?, match_details=?,

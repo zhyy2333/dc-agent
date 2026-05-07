@@ -1,8 +1,8 @@
 """Resume repository."""
 
 import json
-from src.storage.engine import get_connection
-from src.models.resume import Resume
+from hirehive.storage.engine import get_connection
+from hirehive.models.resume import Resume
 
 
 def save_resume(resume: Resume) -> int:

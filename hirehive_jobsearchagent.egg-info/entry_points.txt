@@ -1,0 +1,2 @@
+[console_scripts]
+hirehive = hirehive.main:main

@@ -1,8 +1,8 @@
 """Job repository — CRUD for discovered job listings."""
 
 import json
-from src.storage.engine import get_connection
-from src.models.job import Job, SalaryRange
+from hirehive.storage.engine import get_connection
+from hirehive.models.job import Job, SalaryRange
 
 
 def save_job(job: Job) -> int:

@@ -1,8 +1,8 @@
 """Application repository."""
 
 import json
-from src.storage.engine import get_connection
-from src.models.application import Application
+from hirehive.storage.engine import get_connection
+from hirehive.models.application import Application
 
 
 def save_application(app: Application) -> int:
