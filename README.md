@@ -360,7 +360,3 @@ hirehive --help
 - [ ] 定时搜索 + 新岗位通知
 - [ ] Web UI (Gradio / Streamlit)
 - [ ] 投递漏斗数据分析
-
-## License
-
-MIT
