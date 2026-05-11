@@ -238,8 +238,45 @@ def search_run(role: str, city: str | None, salary_min: int, salary_max: int, pa
     agent = SearcherAgent(registry)
 
     console.print(f"[bold]搜索条件[/bold]: {role} / {city} / {salary_min}-{salary_max}K")
-    console.print("[dim]启动浏览器并搜索... (请确保已安装 playwright: playwright install chromium)[/dim]")
 
+    # ── Login / verification ──
+    logged_in = False
+    while not logged_in:
+        nav = browser_tools.boss_navigate("https://www.zhipin.com/web/geek")
+        current_url = nav.get("url", "")
+
+        if "error" in nav:
+            err = nav["error"]
+            if "ECONNREFUSED" in err or "connect" in err.lower():
+                console.print()
+                console.print("[bold red]未检测到 Chrome 调试端口[/bold red]")
+                console.print()
+                console.print("[yellow]请按以下步骤操作：[/yellow]")
+                console.print()
+                console.print("  [bold]1.[/bold] 完全关闭所有 Chrome 窗口")
+                console.print("  [bold]2.[/bold] 按 [bold]Win+R[/bold]，粘贴以下命令并回车：")
+                console.print()
+                console.print('    [bold green]"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" --remote-debugging-port=9222[/bold green]')
+                console.print()
+                console.print("  [bold]3.[/bold] 在打开的 Chrome 中访问 [bold]zhipin.com[/bold] 并扫码登录")
+                console.print("  [bold]4.[/bold] 回到这里按 Enter")
+                console.print()
+                input()
+                continue
+            else:
+                console.print(f"[red]浏览器错误: {err}[/red]")
+                return
+
+        if "/web/user/" in current_url or "/web/login" in current_url:
+            console.print()
+            console.print("[yellow]当前页面需要登录[/yellow]")
+            console.print("[dim]请在 Chrome 浏览器中扫码登录 BOSS 直聘，完成后按 Enter...[/dim]")
+            input()
+        else:
+            logged_in = True
+            console.print(f"[green]已登录 BOSS 直聘[/green]")
+
+    console.print("[dim]开始搜索...[/dim]")
     with Progress(SpinnerColumn(), TextColumn("[progress.description]{task.description}"), console=console) as progress:
         progress.add_task("搜索中...", total=None)
         result = agent.search(role, city, salary_min, salary_max, pages)

@@ -27,6 +27,7 @@ class Config:
     # Browser
     browser_headless: bool = os.getenv("BROWSER_HEADLESS", "false").lower() == "true"
     browser_user_data_dir: Path = field(default_factory=lambda: DATA_DIR / "browser_profile")
+    browser_cdp_url: str = os.getenv("BROWSER_CDP_URL", "http://127.0.0.1:9222")
 
     # Search defaults
     default_city: str = os.getenv("JOB_DEFAULT_CITY", "深圳")
